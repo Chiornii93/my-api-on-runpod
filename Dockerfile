@@ -26,12 +26,7 @@ RUN pip install comfy-cli
 # Install ComfyUI
 RUN /usr/bin/yes | comfy --workspace /comfyui install --cuda-version 11.8 --nvidia --version 0.3.26
 
-# Change working directory to ComfyUI
 WORKDIR /comfyui
-
-# Добавляем скрипт запуска и обработчик
-ADD src/start.sh src/restore_snapshot.sh src/rp_handler.py test_input.json ./
-RUN chmod +x /start.sh
 
 # Install runpod and requests
 RUN pip install runpod requests
@@ -47,6 +42,10 @@ ADD src/extra_model_paths.yaml ./
 
 # Go back to the root
 WORKDIR /
+
+# Добавляем скрипт запуска и обработчик
+ADD src/start.sh src/rp_handler.py ./
+RUN chmod +x /start.sh
 
 # Start container
 CMD ["/start.sh"]
