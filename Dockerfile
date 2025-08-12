@@ -30,7 +30,7 @@ RUN /usr/bin/yes | comfy --workspace /comfyui install --cuda-version 11.8 --nvid
 WORKDIR /comfyui
 
 # Добавляем скрипт запуска и обработчик
-ADD src/start.sh src/rp_handler.py ./
+ADD src/start.sh src/rp_handler.py /
 RUN chmod +x /start.sh
 
 # Install runpod and requests
