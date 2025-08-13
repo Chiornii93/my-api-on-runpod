@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-# --- ДОБАВЛЕНО: Символические ссылки на папки из RunPod тома --- #
+# --- ADDED: Symbolic links to folders from the RunPod volume --- #
 
-# Заменяем модели на те, что в томе
+# Replacing models with those from the volume
 rm -rf /comfyui/models && ln -s /runpod-volume/ComfyUI/models /comfyui/models
 
-# Заменяем кастомные ноды
+# Replacing custom nodes
 rm -rf /comfyui/custom_nodes && ln -s /runpod-volume/ComfyUI/custom_nodes /comfyui/custom_nodes
 
-# Заменяем input (чтобы видеть mask.png и face.png)
+# Replacing input (to be able to see mask.png and face.png)
 rm -rf /comfyui/input && ln -s /runpod-volume/ComfyUI/input /comfyui/input
 
-# --- КОНЕЦ ДОБАВЛЕНИЯ --- #
+# --- END OF ADDITION --- #
 
 # Use libtcmalloc for better memory management
 TCMALLOC="$(ldconfig -p | grep -Po "libtcmalloc.so.\d" | head -n 1)"
